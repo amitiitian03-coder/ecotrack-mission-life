@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EcoTrack — Mission LiFE</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand"><span class="brand-mark">✳</span><span>EcoTrack<small>MISSION LiFE</small></span></div>
+      <nav>
+        <button class="nav-item active" data-view="dashboard">▦ <span>Dashboard</span></button>
+        <button class="nav-item" data-view="footprint">◉ <span>Footprint tracker</span></button>
+        <button class="nav-item" data-view="challenges">♧ <span>Green challenges</span></button>
+        <button class="nav-item" data-view="solar">☀ <span>Solar calculator</span></button>
+        <button class="nav-item" data-view="community">♙ <span>Community</span></button>
+      </nav>
+      <div class="sidebar-note"><div class="leaf">🌱</div><b>Small steps. Real impact.</b><p>Every greener choice moves us forward.</p></div>
+      <div class="profile"><div class="avatar">A</div><div><b id="sideName">Eco Champion</b><small>Mission LiFE member</small></div></div>
+    </aside>
+    <main class="main">
+      <header class="topbar"><div><p class="eyebrow">YOUR SUSTAINABILITY SPACE</p><h1 id="pageTitle">Good evening, Eco Champion <span>✦</span></h1><p class="muted" id="pageSubtitle">A little progress today makes a greener tomorrow.</p></div><button class="outline-btn" id="editProfile">⚙ Edit profile</button></header>
+      <section class="view active" id="dashboard">
+        <div class="hero"><div><span class="pill">🌍 MISSION LiFE IN ACTION</span><h2>Make every day<br>count for the planet.</h2><p>Track your habits, take on green challenges, and see your impact grow.</p><button class="primary-btn" data-go="footprint">Track my footprint <span>→</span></button></div><div class="hero-art"><div class="sun"></div><div class="hill hill-back"></div><div class="hill hill-front"></div><div class="plant">🌿</div><div class="planet">♻</div></div></div>
+        <div class="stats-grid">
+          <article class="stat-card"><div class="stat-icon mint">♧</div><p>Estimated daily CO₂</p><div class="stat-value"><span id="dashCo2">4.2</span> <small>kg</small></div><small class="positive" id="co2Change">Your personal estimate</small></article>
+          <article class="stat-card"><div class="stat-icon yellow">ϟ</div><p>Daily electricity</p><div class="stat-value"><span id="dashEnergy">5.0</span> <small>kWh</small></div><small class="muted">From your latest entry</small></article>
+          <article class="stat-card"><div class="stat-icon purple">✦</div><p>Green points</p><div class="stat-value"><span id="dashPoints">120</span> <small>pts</small></div><small class="positive">Keep your streak alive</small></article>
+          <article class="stat-card"><div class="stat-icon blue">✓</div><p>Challenges done</p><div class="stat-value"><span id="dashDone">2</span> <small>/ 5</small></div><small class="muted">Small actions add up</small></article>
+        </div>
+        <div class="content-grid"><article class="panel"><div class="panel-heading"><div><h3>Your footprint snapshot</h3><p class="muted">Estimated emissions by activity</p></div><button class="text-btn" data-go="footprint">Update ↗</button></div><div class="bar-row"><div><span>Home electricity</span><b id="electricBarText">2.0 kg</b></div><div class="bar-track"><div class="bar green" id="electricBar" style="width:48%"></div></div></div><div class="bar-row"><div><span>Transport</span><b id="transportBarText">1.4 kg</b></div><div class="bar-track"><div class="bar bluebar" id="transportBar" style="width:34%"></div></div></div><div class="bar-row"><div><span>Other daily habits</span><b id="otherBarText">0.8 kg</b></div><div class="bar-track"><div class="bar orangebar" id="otherBar" style="width:18%"></div></div></div><div class="insight">💡 <span><b>Try this:</b> Switching off unused lights can reduce avoidable electricity use.</span></div></article>
+        <article class="panel challenge-panel"><div class="panel-heading"><div><h3>Today's green actions</h3><p class="muted">Complete tasks to earn points</p></div><button class="text-btn" data-go="challenges">View all ↗</button></div><div id="miniChallenges"></div></article></div>
+        <div class="disclaimer">Estimates are illustrative and depend on the assumptions entered. They are not official emissions measurements.</div>
+      </section>
+      <section class="view" id="footprint">
+        <div class="section-intro"><div><h2>Footprint tracker</h2><p>Enter a typical day's habits to estimate your carbon footprint.</p></div><span class="pill">PERSONALISED ESTIMATE</span></div>
+        <div class="two-col"><form class="panel form-panel" id="footprintForm"><h3>Daily activity</h3><label>Electricity used <span>kWh/day</span><input type="number" min="0" max="1000" step=".1" id="electricity" value="5" required></label><label>Travel by car / bike <span>km/day</span><input type="number" min="0" max="500" step=".1" id="travel" value="8" required></label><label>Public transport <span>km/day</span><input type="number" min="0" max="500" step=".1" id="publicTransport" value="2" required></label><label>Meals with meat <span>meals/day</span><input type="number" min="0" max="10" step="1" id="meat" value="1" required></label><button class="primary-btn full" type="submit">Calculate my footprint →</button><p class="tiny muted">Factors used: electricity 0.4 kg CO₂/kWh, personal motor travel 0.12 kg/km, public transport 0.04 kg/km, meat meal 1.5 kg CO₂e. Simplified demo assumptions.</p></form>
+        <article class="panel result-panel"><div class="result-icon">🌍</div><p class="muted">YOUR ESTIMATED DAILY FOOTPRINT</p><div class="result-number"><span id="totalCo2">4.2</span><small>kg CO₂e</small></div><p id="footprintMessage">Your estimate is ready. Explore a small change you can make today.</p><div class="result-breakdown"><div><span>Electricity</span><b id="resultElectric">2.0 kg</b></div><div><span>Personal travel</span><b id="resultTravel">0.96 kg</b></div><div><span>Public transport</span><b id="resultPublic">0.08 kg</b></div><div><span>Meals</span><b id="resultMeals">1.5 kg</b></div></div><div class="insight">🌱 <span>Try reducing one high-impact activity and recalculate to compare your estimate.</span></div></article></div>
+      </section>
+      <section class="view" id="challenges">
+        <div class="section-intro"><div><h2>Green challenges</h2><p>Turn good intentions into everyday habits. Complete an action to earn points.</p></div><span class="pill">✨ EARN GREEN POINTS</span></div>
+        <div class="challenge-grid" id="challengeGrid"></div>
+      </section>
+      <section class="view" id="solar">
+        <div class="section-intro"><div><h2>Rooftop solar calculator</h2><p>Get a rough estimate of potential solar generation and bill savings.</p></div><span class="pill">☀ CLEAN ENERGY</span></div>
+        <div class="two-col"><form class="panel form-panel" id="solarForm"><h3>Your rooftop details</h3><label>Usable rooftop area <span>sq. ft.</span><input type="number" id="roofArea" min="0" max="100000" value="300" required></label><label>Average electricity bill <span>₹ / month</span><input type="number" id="bill" min="0" max="1000000" value="1800" required></label><label>Sunlight conditions<select id="sunlight"><option value="1">Good (5 peak sun hours)</option><option value=".8">Moderate (4 peak sun hours)</option><option value=".6">Limited (3 peak sun hours)</option></select></label><button class="primary-btn full" type="submit">Estimate solar potential →</button><p class="tiny muted">Illustrative model: 100 sq. ft. ≈ 1 kW, 4 kWh/day per kW under good sun, 30 days/month. Actual output depends on location, shading, system and tariffs.</p></form><article class="panel solar-results"><div class="sun-large">☀</div><p class="muted">ESTIMATED SOLAR POTENTIAL</p><div class="result-number"><span id="solarKw">3.0</span><small>kW system</small></div><div class="solar-metrics"><div><small>Monthly generation</small><b><span id="solarUnits">360</span> kWh</b></div><div><small>Estimated bill offset</small><b>₹<span id="solarSaving">1,800</span></b></div></div><p class="tiny muted">This is an initial estimate, not a quote or guarantee of savings. Consult a qualified installer for a site assessment.</p></article></div>
+      </section>
+      <section class="view" id="community">
+        <div class="section-intro"><div><h2>Community impact</h2><p>Celebrate consistency and encourage your community to take greener steps.</p></div><span class="pill">🤝 BETTER TOGETHER</span></div>
+        <div class="community-banner"><div><h2>One community.<br>Thousands of greener choices.</h2><p>Your points are saved on this device. Invite friends to try the demo and compare habits together.</p><button class="primary-btn" id="shareBtn">Copy project invite ↗</button></div><div class="community-emoji">🌳</div></div>
+        <article class="panel leaderboard"><div class="panel-heading"><div><h3>Demo leaderboard</h3><p class="muted">Sample participants — not real user rankings</p></div><span class="pill">WEEKLY</span></div><div class="leader-row"><span class="rank gold">1</span><div class="avatar">S</div><div class="leader-name"><b>GreenSteps</b><small>12 challenges completed</small></div><b>460 pts</b></div><div class="leader-row"><span class="rank silver">2</span><div class="avatar">R</div><div class="leader-name"><b>RecycleRanger</b><small>9 challenges completed</small></div><b>350 pts</b></div><div class="leader-row you"><span class="rank bronze">3</span><div class="avatar">A</div><div class="leader-name"><b id="communityName">Eco Champion (You)</b><small id="communityDone">2 challenges completed</small></div><b><span id="communityPoints">120</span> pts</b></div><p class="tiny muted">For the hackathon MVP, leaderboard entries are sample data. A production version would require accounts and a shared database.</p></article>
+      </section>
+      <footer>Built for HackCult ’26 · HC26-GEDA01 · Green Energy & Sustainability <span>Made for a greener tomorrow 🌿</span></footer>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
